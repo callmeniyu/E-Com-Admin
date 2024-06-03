@@ -35,7 +35,7 @@ const AddProduct = () => {
         //     body: formData
         // }).then((resp) => resp.json()).then((data) => response=data);
 
-        const response = await axios.post("http://localhost:4000/upload", formData, {
+        const response = await axios.post(`${process.env.VITE_SERVER_URL}/upload`, formData, {
             headers: {
                 Accept: "application/json"
             }
@@ -43,7 +43,7 @@ const AddProduct = () => {
         const data = response.data;
         if (data.success) {
             productDetails.image = data.image_url
-            const response = await axios.post("http://localhost:4000/addproduct", productDetails, {
+            const response = await axios.post(`${process.env.VITE_SERVER_URL}/addproduct`, productDetails, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json"

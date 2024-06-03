@@ -9,7 +9,7 @@ const ListProduct = () => {
 
   const fetchInfo = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/allproducts")
+      const response = await axios.get(`${process.env.VITE_SERVER_URL}/allproducts`)
       const data = response.data;
       setAllProducts(data);
     } catch (error) {
@@ -20,7 +20,7 @@ const ListProduct = () => {
 
   const removeProduct = async (id) => {
     try {
-      const response = await axios.post("http://localhost:4000/removeproduct", { id: id });
+      const response = await axios.post(`${process.env.VITE_SERVER_URL}/removeproduct`, { id: id });
       fetchInfo();
     } catch (error) {
       console.log(error)
